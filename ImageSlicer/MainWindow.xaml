@@ -1,0 +1,38 @@
+﻿<Window x:Class="ImageSlicer.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ImageSlicer"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525" x:Name="MW">
+    <Grid x:Name="layoutRoot">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="38"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition x:Name="cdRightPanel" Width="100"/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="{Binding Width, ElementName=cdRightPanel}"/>
+            </Grid.ColumnDefinitions>
+            <TextBox x:Name="tbImageName" IsReadOnly="True" Margin="5" Text="FileName" VerticalContentAlignment="Center"/>
+            <Button Grid.Column="1" x:Name="btnSelectImage" Margin="5" Content="SelectImage"/>
+        </Grid>
+        <Grid Grid.Row="1" Grid.Column="1">
+            <StackPanel Orientation="Vertical">
+                <Button x:Name="btnAddLine" Height="24" Margin="5" Content="AddLine"></Button>
+                <Button x:Name="btnsplit" Height="24" Margin="5" Content="Split"></Button>
+            </StackPanel>
+        </Grid>
+        <ScrollViewer x:Name="scrImage" Grid.Row="1" Background="AntiqueWhite">
+            <Canvas x:Name="canvasImage" HorizontalAlignment="Left" Height="{Binding ActualHeight, ElementName=imgMain}" Margin="10" >
+                <Image x:Name="imgMain" />
+            </Canvas>
+        </ScrollViewer>
+    </Grid>
+</Window>
